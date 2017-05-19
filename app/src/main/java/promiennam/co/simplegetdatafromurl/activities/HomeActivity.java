@@ -29,8 +29,8 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
         txtGeoname = (TextView) findViewById(R.id.geo_content);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
-
-        new RetrofitHelper(this).getData();
+        // get data
+        new RetrofitHelper().getData(this);
     }
 
     @Override

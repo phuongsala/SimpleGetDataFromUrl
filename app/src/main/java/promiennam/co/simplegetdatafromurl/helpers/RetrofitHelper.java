@@ -22,14 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    private ICallback mCallback;
     private GeonameList mGeonameList;
 
-    public RetrofitHelper(ICallback callback) {
-        mCallback = callback;
+    public RetrofitHelper(){
+
     }
 
-    public void getData() {
+    public void getData(final ICallback callback) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -49,7 +48,6 @@ public class RetrofitHelper {
 
                         @Override
                         public void onNext(@NonNull GeonameList geonameList) {
-                            Log.d("data", "" + geonameList.getGeonameList());
                             mGeonameList = geonameList;
 
                         }
@@ -62,8 +60,8 @@ public class RetrofitHelper {
 
                         @Override
                         public void onComplete() {
-                            if (mCallback != null) {
-                                mCallback.onComplete(mGeonameList);
+                            if (callback != null) {
+                                callback.onComplete(mGeonameList);
                             }
                         }
                     });
