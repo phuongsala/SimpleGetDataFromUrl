@@ -1,4 +1,4 @@
-package promiennam.co.simplegetdatafromurl;
+package promiennam.co.simplegetdatafromurl.models;
 
 import com.google.gson.annotations.SerializedName;
 

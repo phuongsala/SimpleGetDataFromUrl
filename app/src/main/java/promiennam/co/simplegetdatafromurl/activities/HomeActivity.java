@@ -1,4 +1,4 @@
-package promiennam.co.simplegetdatafromurl;
+package promiennam.co.simplegetdatafromurl.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import io.reactivex.Observable;
+import promiennam.co.simplegetdatafromurl.R;
+import promiennam.co.simplegetdatafromurl.helpers.RetrofitHelper;
+import promiennam.co.simplegetdatafromurl.interfaces.ICallback;
+import promiennam.co.simplegetdatafromurl.models.GeonameList;
 
 public class HomeActivity extends AppCompatActivity implements ICallback {
 
@@ -50,8 +53,6 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
     @Override
     public void onComplete(GeonameList geonameList) {
         // just show the first city name
-        if (geonameList != null) {
-            txtGeoname.setText(geonameList.getGeonameList().get(0).getToponymName());
-        }
+        txtGeoname.setText(geonameList.getGeonameList().get(0).getToponymName());
     }
 }

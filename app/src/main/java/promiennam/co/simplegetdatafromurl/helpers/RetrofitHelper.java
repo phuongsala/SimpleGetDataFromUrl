@@ -1,4 +1,4 @@
-package promiennam.co.simplegetdatafromurl;
+package promiennam.co.simplegetdatafromurl.helpers;
 
 import android.util.Log;
 
@@ -10,6 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import promiennam.co.simplegetdatafromurl.interfaces.ICallback;
+import promiennam.co.simplegetdatafromurl.interfaces.IDataListener;
+import promiennam.co.simplegetdatafromurl.models.GeonameList;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
