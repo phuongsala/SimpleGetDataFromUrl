@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import promiennam.co.simplegetdatafromurl.R;
@@ -15,6 +17,7 @@ import promiennam.co.simplegetdatafromurl.models.GeonameList;
 public class HomeActivity extends AppCompatActivity implements ICallback {
 
     private TextView txtGeoname;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
         setSupportActionBar(toolbar);
 
         txtGeoname = (TextView) findViewById(R.id.geo_content);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
 
         new RetrofitHelper(this).getData();
     }
@@ -54,5 +59,6 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
     public void onComplete(GeonameList geonameList) {
         // just show the first city name
         txtGeoname.setText(geonameList.getGeonameList().get(0).getToponymName());
+        progressBar.setVisibility(View.GONE);
     }
 }
