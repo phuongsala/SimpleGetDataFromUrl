@@ -22,13 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    private GeonameList mGeonameList;
+    private static GeonameList mGeonameList;
 
-    public RetrofitHelper(){
-
-    }
-
-    public void getData(final ICallback callback) {
+    public static void getData(final ICallback callback) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

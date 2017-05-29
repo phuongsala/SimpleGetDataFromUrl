@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         // get data
-        new RetrofitHelper().getData(this);
+        RetrofitHelper.getData(this);
     }
 
     @Override
