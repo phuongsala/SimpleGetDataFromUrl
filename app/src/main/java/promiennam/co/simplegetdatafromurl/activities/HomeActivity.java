@@ -12,11 +12,11 @@ import android.widget.TextView;
 import promiennam.co.simplegetdatafromurl.R;
 import promiennam.co.simplegetdatafromurl.helpers.RetrofitHelper;
 import promiennam.co.simplegetdatafromurl.interfaces.ICallback;
-import promiennam.co.simplegetdatafromurl.models.GeonameList;
+import promiennam.co.simplegetdatafromurl.models.MovieList;
 
 public class HomeActivity extends AppCompatActivity implements ICallback {
 
-    private TextView txtGeoname;
+    private TextView txtTitle;
     private ProgressBar progressBar;
 
     @Override
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        txtGeoname = (TextView) findViewById(R.id.geo_content);
+        txtTitle = (TextView) findViewById(R.id.txt_title);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         // get data
@@ -56,9 +56,9 @@ public class HomeActivity extends AppCompatActivity implements ICallback {
     }
 
     @Override
-    public void onComplete(GeonameList geonameList) {
-        // just show the first city name
-        txtGeoname.setText(geonameList.getGeonameList().get(0).getToponymName());
+    public void onComplete(MovieList movieList) {
+        // just show the first film title
+        txtTitle.setText(movieList.getMovieList().get(0).getTitle());
         progressBar.setVisibility(View.GONE);
     }
 }

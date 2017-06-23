@@ -1,7 +1,7 @@
 package promiennam.co.simplegetdatafromurl.interfaces;
 
 import io.reactivex.Observable;
-import promiennam.co.simplegetdatafromurl.models.GeonameList;
+import promiennam.co.simplegetdatafromurl.models.MovieList;
 import retrofit2.http.GET;
 
 /**
@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 
 public interface IDataListener {
 
-    @GET("citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo")
-    Observable<GeonameList> getGeonameList();
+    @GET("top_rated?api_key=INSERT_YOUR_API_KEY")
+    Observable<MovieList> getMovieList();
 }

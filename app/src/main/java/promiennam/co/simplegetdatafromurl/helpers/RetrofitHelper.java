@@ -12,7 +12,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import promiennam.co.simplegetdatafromurl.interfaces.ICallback;
 import promiennam.co.simplegetdatafromurl.interfaces.IDataListener;
-import promiennam.co.simplegetdatafromurl.models.GeonameList;
+import promiennam.co.simplegetdatafromurl.models.MovieList;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,29 +22,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    private static GeonameList mGeonameList;
+    private static MovieList mMovieList;
 
     public static void getData(final ICallback callback) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("http://api.geonames.org/")
+                .baseUrl("http://api.themoviedb.org/3/movie/")
                 .build();
 
-        Observable<GeonameList> observable = retrofit.create(IDataListener.class).getGeonameList();
+        Observable<MovieList> observable = retrofit.create(IDataListener.class).getMovieList();
 
         if (observable != null) {
             observable.subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<GeonameList>() {
+                    .subscribe(new Observer<MovieList>() {
                         @Override
                         public void onSubscribe(@NonNull Disposable d) {
                         }
 
                         @Override
-                        public void onNext(@NonNull GeonameList geonameList) {
-                            mGeonameList = geonameList;
+                        public void onNext(@NonNull MovieList movieList) {
+                            RetrofitHelper.mMovieList = movieList;
 
                         }
 
@@ -57,7 +57,7 @@ public class RetrofitHelper {
                         @Override
                         public void onComplete() {
                             if (callback != null) {
-                                callback.onComplete(mGeonameList);
+                                callback.onComplete(mMovieList);
                             }
                         }
                     });

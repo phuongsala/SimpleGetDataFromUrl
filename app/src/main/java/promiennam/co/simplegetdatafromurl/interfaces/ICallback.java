@@ -1,6 +1,6 @@
 package promiennam.co.simplegetdatafromurl.interfaces;
 
-import promiennam.co.simplegetdatafromurl.models.GeonameList;
+import promiennam.co.simplegetdatafromurl.models.MovieList;
 
 /**
  * Created by Phuong on 19-May-17.
@@ -8,5 +8,5 @@ import promiennam.co.simplegetdatafromurl.models.GeonameList;
 
 public interface ICallback {
 
-    void onComplete(GeonameList geonameList);
+    void onComplete(MovieList movieList);
 }
